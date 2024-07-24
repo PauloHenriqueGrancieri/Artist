@@ -1,1 +1,11 @@
-/* You can add global styles to this file, and also import other style files */
+/* Reseta margens e preenchimentos do html e body */
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  width: 100%;
+}
+
+body {
+  background: #fff; /* Define uma cor de fundo neutra ou qualquer outra cor padrão */
+}
