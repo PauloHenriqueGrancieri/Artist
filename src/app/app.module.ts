@@ -2,14 +2,13 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouterModule } from '@angular/router';
 
-import { routes } from './app.routes';  // importando as rotas
-
+import { routes } from './app.routes';
 @NgModule({
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)  // configurando as rotas
+    RouterModule.forRoot(routes)
   ],
   providers: [],
-  bootstrap: []  // removendo o AppComponent da bootstrap array
+  bootstrap: []
 })
 export class AppModule { }

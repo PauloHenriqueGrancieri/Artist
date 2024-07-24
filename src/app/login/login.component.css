@@ -1,63 +1,142 @@
-/* Adiciona o fundo em degradê à página de login */
+/* Adds gradient background to login page */
 :host {
   display: block;
   height: 100vh;
   width: 100vw;
   background: linear-gradient(135deg, #44437D, #4375C0, #506BCA, #1A64BA) no-repeat;
   background-size: cover;
+  font-family: 'Roboto', sans-serif; /* Apply font to the entire component */
 }
 
-/* Estilo para o container do login */
+/* Style for the login container */
 .login-container {
   display: flex;
   justify-content: center;
   align-items: center;
   height: 100%;
-  width: 100%; /* Garante que a largura é 100% da visualização */
+  width: 100%; /* Ensures the width is 100% of the view */
 }
 
-/* Estilo para o formulário de login */
+/* Style for login form */
 form {
   width: 400px;
   height: 500px;
   border: 1px solid #ccc;
   padding: 20px;
-  border-radius: 10px; /* Bordas arredondadas do formulário */
+  border-radius: 10px; /* Rounded edges of the form */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #fff;
+  background-color: #D6D6D6;
+  position: relative; /* Make the form a positioning context for the buttons */
 }
 
-/* Estilo para cada grupo de formulário */
+/* Style for each form group */
 .form-group {
   margin-bottom: 15px;
 }
 
-/* Estilo para os labels dos campos */
+/* Style for field labels */
 label {
   display: block;
   margin-bottom: 5px;
+  margin-top: 30px; /* Adds space from the top of the form */
 }
 
-/* Estilo para os campos de input */
+/* Style for input fields */
 input {
   width: 100%;
   padding: 8px;
+  height: 42px; /* Sets height of input fields */
   box-sizing: border-box;
-  border-radius: 10px; /* Bordas arredondadas dos campos de input */
-  border: 1px solid #ccc; /* Borda dos campos de input */
+  border-radius: 10px; /* Rounded edges of input fields */
+  background-color: #D6D6D6; /* Same background color as form */
+  border: 1px solid #969090; /* Border color */
+  color: #000; /* Text color when typing */
+  font-family: 'Roboto', sans-serif; /* Apply font to input fields */
 }
 
-/* Estilo para o botão de submit */
-button {
-  width: 100%;
+/* Placeholder text style for input fields */
+input::placeholder {
+  color: #828181; /* Placeholder text color */
+  opacity: 1; /* Ensure the placeholder text color is visible */
+}
+
+/* Style for the 'Create Account' button */
+.create-account-btn {
+  width: 150px;
   padding: 10px;
-  background-color: #007bff;
+  background-color: #46346D; /* Button background color */
   color: white;
   border: none;
-  border-radius: 10px; /* Bordas arredondadas do botão */
+  border-radius: 10px; /* Rounded button edges */
   cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 250px; /* Position from the top of the form */
+  left: 40px;
 }
 
-button:hover {
-  background-color: #0056b3;
+.create-account-btn:hover {
+  background-color: #3a2e5f; /* Darker shade for hover effect */
+}
+
+/* Style for the 'Sign In' button */
+.sign-in-btn {
+  width: 150px;
+  padding: 10px;
+  background-color: #312A2A; /* Button background color */
+  color: white;
+  border: none;
+  border-radius: 10px; /* Rounded button edges */
+  cursor: pointer;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 250px; /* Position from the top of the form */
+  right: 40px;
+}
+
+.sign-in-btn:hover {
+  background-color: #1e1c1c; /* Darker shade for hover effect */
+}
+
+/* Style for the 'Forgot password?' link */
+.forgot-password {
+  position: absolute;
+  top: 320px; /* 40px below the buttons */
+  left: 30px; /* 30px from the left of the form */
+}
+
+.forgot-password a {
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.forgot-password a:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
+/* Style for the social media icons container */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  left: 0px;
+  bottom: 20px; /* Adjust as needed */
+  width: 100%;
+}
+
+.social-icon {
+  display: inline-block;
+  margin: 0 10px; /* Space between icons */
+}
+
+.social-icon img {
+  width: 40px; /* Icon width */
+  height: 40px; /* Icon height */
+  border-radius: 10px; /* Rounded edges */
+  background-color: #fff; /* Background color for the icon */
+  padding: 5px; /* Padding inside the border */
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
 }

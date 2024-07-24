@@ -1,4 +1,4 @@
-/* Reseta margens e preenchimentos do html e body */
+/* Resets html and body margins and padding */
 html, body {
   margin: 0;
   padding: 0;
@@ -7,5 +7,5 @@ html, body {
 }
 
 body {
-  background: #fff; /* Define uma cor de fundo neutra ou qualquer outra cor padrão */
+  background: #fff; /* Sets a neutral background color or any other default color */
 }
