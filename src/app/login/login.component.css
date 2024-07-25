@@ -8,6 +8,19 @@
   font-family: 'Roboto', sans-serif; /* Apply font to the entire component */
 }
 
+/* Style for the home icon */
+.home-icon-container {
+  position: absolute;
+  top: 20px; /* Adjust spacing from the top edge */
+  left: 20px; /* Adjust spacing from the left edge */
+  z-index: 1000; /* Ensure the icon is above other elements */
+}
+
+.home-icon-container img {
+  width: 30px; /* Adjust icon size as needed */
+  height: 30px; /* Adjust icon size as needed */
+}
+
 /* Style for the login container */
 .login-container {
   display: flex;
@@ -17,21 +30,18 @@
   width: 100%; /* Ensures the width is 100% of the view */
 }
 
-/* Style for login form */
+/* Style for login form with blurred background */
 form {
+  position: relative; /* Ensure positioning context for the form */
   width: 400px;
-  height: 500px;
+  height: auto; /* Allow height to expand based on content */
+  min-height: 500px; /* Ensure minimum height */
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 10px; /* Rounded edges of the form */
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-  background-color: #D6D6D6;
-  position: relative; /* Make the form a positioning context for the buttons */
-}
-
-/* Style for each form group */
-.form-group {
-  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+  backdrop-filter: blur(10px); /* Apply blur effect */
 }
 
 /* Style for field labels */
@@ -42,73 +52,83 @@ label {
 }
 
 /* Style for input fields */
+.input-container {
+  position: relative;
+  width: 100%;
+}
+
 input {
   width: 100%;
   padding: 8px;
   height: 42px; /* Sets height of input fields */
   box-sizing: border-box;
   border-radius: 10px; /* Rounded edges of input fields */
-  background-color: #D6D6D6; /* Same background color as form */
-  border: 1px solid #969090; /* Border color */
+  background: transparent; /* Make background transparent */
+  border: 1px solid #6b68c9; /* Border color */
   color: #000; /* Text color when typing */
   font-family: 'Roboto', sans-serif; /* Apply font to input fields */
+  position: relative;
+  z-index: 1; /* Ensure input stays above the pseudo-element */
+}
+
+.input-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.6); /* Semi-transparent background */
+  border-radius: 10px; /* Rounded edges of the background */
+  backdrop-filter: blur(5px); /* Apply blur effect */
+  z-index: -1; /* Ensure background is behind the input */
 }
 
 /* Placeholder text style for input fields */
 input::placeholder {
-  color: #828181; /* Placeholder text color */
+  color: #ffffff; /* Placeholder text color */
   opacity: 1; /* Ensure the placeholder text color is visible */
 }
 
-/* Style for the 'Create Account' button */
-.create-account-btn {
-  width: 150px;
-  padding: 10px;
-  background-color: #46346D; /* Button background color */
-  color: white;
-  border: none;
-  border-radius: 10px; /* Rounded button edges */
-  cursor: pointer;
-  justify-content: center;
-  align-items: center;
+/* Style for password container */
+.password-container {
+  position: relative;
+  width: 100%;
+}
+
+input[type="password"] {
+  width: 100%;
+  padding: 8px 40px 8px 8px; /* Padding-right adjusted for the icon */
+  height: 42px; /* Height of the input */
+  box-sizing: border-box; /* Ensures padding is included in the total width/height */
+}
+
+.password-toggle {
   position: absolute;
-  top: 250px; /* Position from the top of the form */
-  left: 40px;
-}
-
-.create-account-btn:hover {
-  background-color: #3a2e5f; /* Darker shade for hover effect */
-}
-
-/* Style for the 'Sign In' button */
-.sign-in-btn {
-  width: 150px;
-  padding: 10px;
-  background-color: #312A2A; /* Button background color */
-  color: white;
-  border: none;
-  border-radius: 10px; /* Rounded button edges */
+  right: 10px; /* Adjust spacing from the right edge */
+  top: 50%;
+  transform: translateY(-50%);
   cursor: pointer;
-  justify-content: center;
-  align-items: center;
-  position: absolute;
-  top: 250px; /* Position from the top of the form */
-  right: 40px;
+  z-index: 2; /* Ensure the icon stays above other elements */
 }
 
-.sign-in-btn:hover {
-  background-color: #1e1c1c; /* Darker shade for hover effect */
+.password-toggle img {
+  width: 20px; /* Icon size */
+  height: 20px; /* Icon size */
 }
 
 /* Style for the 'Forgot password?' link */
 .forgot-password {
-  position: absolute;
-  top: 320px; /* 40px below the buttons */
-  left: 30px; /* 30px from the left of the form */
+  position: relative;
+  margin-top: 20px; /* Space above the link */
+  margin-bottom: 20px; /* Space below the link */
+  text-align: right; /* Align the text to the right */
+  z-index: 1; /* Ensure it stays above other elements */
+  font-size: 14px;
 }
 
 .forgot-password a {
-  color: #007bff; /* Link color */
+  color: #0e0e0e; /* Link color */
   text-decoration: none; /* Remove underline */
 }
 
@@ -116,27 +136,89 @@ input::placeholder {
   text-decoration: underline; /* Add underline on hover */
 }
 
-/* Style for the social media icons container */
+/* Style for the button container */
+.button-container {
+  display: flex;
+  flex-direction: column; /* Stack buttons vertically */
+  align-items: center; /* Center buttons horizontally */
+  margin-top: 20px; /* Space above the buttons */
+}
+
+/* Style for the 'Sign In' button */
+.sign-in-btn {
+  width: 100%; /* Full width */
+  padding: 10px;
+  background: linear-gradient(135deg, #44437D, #4375C0, #506BCA, #1A64BA); /* Gradient background matching page colors */
+  color: white;
+  border: none;
+  border-radius: 10px; /* Rounded button edges */
+  cursor: pointer;
+  margin-bottom: 10px; /* Space between buttons */
+}
+
+.sign-in-btn:hover {
+  background: linear-gradient(135deg, #2E2D6A, #3D5AB0, #5A77D2, #1359A5); /* Different gradient colors for hover effect */
+}
+
+/* Style for the register link container */
+.register-link {
+  text-align: center; /* Center the text */
+  margin-top: 20px; /* Space above the link */
+  font-size: 14px;
+}
+
+/* Style for the register link text */
+.register-link-text {
+  font-weight: bold; /* Make the text bold */
+  color: #007bff; /* Link color */
+  text-decoration: none; /* Remove underline */
+}
+
+.register-link-text:hover {
+  text-decoration: underline; /* Add underline on hover */
+}
+
 .social-icons {
   display: flex;
   justify-content: center;
-  align-items: center;
-  position: absolute;
-  left: 0px;
-  bottom: 20px; /* Adjust as needed */
-  width: 100%;
+  position: absolute; /* Position at the bottom of the form */
+  bottom: 20px; /* Space from the bottom of the form */
+  left: 50%; /* Center horizontally */
+  transform: translateX(-50%); /* Adjust to center correctly */
+  width: auto; /* Adjust width to fit the content */
 }
 
 .social-icon {
-  display: inline-block;
   margin: 0 10px; /* Space between icons */
 }
 
+/* Adjust individual icon positioning */
+.social-icon:first-child {
+  margin-right: calc(50%); /* Position 10px to the left of the center */
+}
+
+.social-icon:last-child {
+  margin-left: calc(50% - 40px); /* Position 10px to the right of the center */
+}
+
+/* Style for individual social media icons */
 .social-icon img {
   width: 40px; /* Icon width */
   height: 40px; /* Icon height */
-  border-radius: 10px; /* Rounded edges */
-  background-color: #fff; /* Background color for the icon */
+  background-color: transparent; /* Ensure the background is transparent */
   padding: 5px; /* Padding inside the border */
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Optional shadow */
+}
+
+/* Style for the buttons container */
+.button-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px; /* Space above the buttons */
+}
+
+/* Error message style */
+.error-message {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }

@@ -1,22 +1,41 @@
 <div class="login-container">
-  <form>
+  <div class="home-icon-container">
+    <a href="#">
+      <img src="assets/images/home-icon.png" alt="Home">
+    </a>
+  </div>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">
     <div class="form-group">
       <label for="email">Email</label>
-      <input type="email" id="email" name="email" placeholder="example@email.com" required>
+      <input type="email" id="email" name="email" placeholder="example@email.com" required ngModel #email="ngModel"
+             (blur)="onBlur(email)" pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$">
+      <div *ngIf="email.touched && email.invalid" class="error-message">
+        <div *ngIf="email.errors?.['required']">Email is required</div>
+        <div *ngIf="email.errors?.['pattern']">Invalid email format</div>
+      </div>
     </div>
     <div class="form-group">
       <label for="password">Password</label>
-      <input type="password" id="password" name="password" placeholder="value" required>
+      <div class="password-container">
+        <input [type]="passwordInputType" id="password" name="password" placeholder="Type your password" required
+               ngModel #password="ngModel" (blur)="onBlur(password)">
+          <span class="password-toggle" (click)="togglePasswordVisibility()">
+              <img [src]="passwordVisibilityIcon" alt="Toggle password visibility">
+          </span>
+      </div>
     </div>
-    <button type="button" class="create-account-btn">Create Account</button>
-    <button type="button" class="sign-in-btn">Sign In</button>
     <div class="forgot-password">
       <a href="#">Forgot password?</a>
     </div>
+    <div class="button-container">
+      <button type="submit" class="sign-in-btn">Sign In</button>
+    </div>
+    <div class="register-link">
+      Don't have an account? <a href="#" class="register-link-text">Register</a>
+    </div>
     <div class="social-icons">
-      <a href="#" class="social-icon"><img src="assets/images/linkedin-icon.jpg" alt="LinkedIn"></a>
-      <a href="#" class="social-icon"><img src="assets/images/google-icon.jpg" alt="Google"></a>
-      <a href="#" class="social-icon"><img src="assets/images/github-icon.jpg" alt="GitHub"></a>
+      <a href="#" class="social-icon"><img src="assets/images/google-icon.png" alt="Google"></a>
+      <a href="#" class="social-icon"><img src="assets/images/github-icon.png" alt="GitHub"></a>
     </div>
   </form>
 </div>
